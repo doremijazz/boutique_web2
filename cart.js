@@ -20,7 +20,8 @@ function addArticle(article) {
 
 // Supprime un article du panier
 function deleteArticle(id) {
-
+    // Conserve uniquement les articles dont l'identifiant est différent
+    cart = cart.filter(item => item.article.id !== id)
 }
 
 // Calcule le montant total du panier
