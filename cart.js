@@ -50,7 +50,16 @@ function increaseQuantity(id) {
 
 // Diminue la quantité d'un article
 function decreaseQuantity(id) {
+    // Recherche l'article dans le panier grâce à son identifiant
+    const existingItem = cart.find(item => item.article.id === id);
 
+    if (existingItem ) {
+        if(existingItem.quantity > 1) {
+            existingItem.quantity--;
+        }else {
+            deleteArticle(id);
+        }
+    }
 }
 
 // Calcule le sous-total d'un article
