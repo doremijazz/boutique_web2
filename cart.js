@@ -36,7 +36,7 @@ function calculateTotal() {
 
 // Vide le panier
 function reset() {
-
+    cart = [];
 }
 
 // Crée une commande
