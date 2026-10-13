@@ -89,3 +89,14 @@ boutonTrierCroissant.addEventListener("click", function (){
     document.querySelector(.fiches).innerHTML = "";
     displayProducts(productsOrdonnees);
 });
+
+const boutonTrierDecroissant = document.querySelector(".btn-trier-decroissant");
+
+boutonTrierDecroissant.addEventListener("click", function (){
+    const productsOrdonnees = Array.from(produits);
+    productsOrdonnees.sort(function (a,b){
+        return a.prix - b.prix;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsOrdonnees);
+});
