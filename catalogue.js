@@ -27,6 +27,13 @@ function displayProducts(products){
         const disponibilityElement = document.createElement("p");
         disponibilityElement = products[i].disponibilite ? "En stock" : "Epuisé";
 
+        // AJout du bouton pour ajouter au panier
+
+        // Clic sur la fiche produit
+        productElement.addEventListener("click", () => {
+            displayDetailsProduct(products[i]);
+        });
+
         //Rattachement de nos balises au DOM
         sectionFiches.appendChild(productElement);
         
@@ -71,3 +78,14 @@ function displayDetailsProduct(product){
         productElement.appendChild(quantityElement);
         productElement.appendChild(descriptionElement);
 }
+
+const boutonTrierCroissant = document.querySelector(".btn-trier-croissant");
+
+boutonTrierCroissant.addEventListener("click", function (){
+    const productsOrdonnees = Array.from(produits);
+    productsOrdonnees.sort(function (a,b){
+        return a.prix - b.prix;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsOrdonnees);
+});
