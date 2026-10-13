@@ -26,7 +26,12 @@ function deleteArticle(id) {
 
 // Calcule le montant total du panier
 function calculateTotal() {
-
+    let total = 0; 
+    // Additionne les sous-totaux des articles du panier
+    cart.forEach(item => {
+        total += calculateSubtotal(item.article.id);
+    });
+    return total;
 }
 
 // Vide le panier
