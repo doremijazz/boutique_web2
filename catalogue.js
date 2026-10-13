@@ -109,4 +109,44 @@ boutonFiltrerInformatique.addEventListener("click", function (){
     });
     document.querySelector(.fiches).innerHTML = "";
     displayProducts(productsFiltrer);
-})
+});
+
+const boutonFiltrerVetement = document.querySelector(".btn-vetement");
+
+boutonFiltrerVetement.addEventListener("click", function (){
+    const productsFiltrer = products.filter(function (product){
+        retrun product.categorieId ==;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsFiltrer);
+});
+
+const boutonFiltrerMaison = document.querySelector(".btn-maison");
+
+boutonFiltrerMaison.addEventListener("click", function (){
+    const productsFiltrer = products.filter(function (product){
+        retrun product.categorieId ==;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsFiltrer);
+});
+
+const boutonFiltrerBeaute = document.querySelector(".btn-beauté");
+
+boutonFiltrerBeaute.addEventListener("click", function (){
+    const productsFiltrer = products.filter(function (product){
+        retrun product.categorieId ==;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsFiltrer);
+});
+
+const boutonFiltrerSport = document.querySelector(".btn-sport");
+
+boutonFiltrerSport.addEventListener("click", function (){
+    const productsFiltrer = products.filter(function (product){
+        retrun product.categorieId ==;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsFiltrer);
+});
