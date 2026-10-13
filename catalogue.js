@@ -100,3 +100,13 @@ boutonTrierDecroissant.addEventListener("click", function (){
     document.querySelector(.fiches).innerHTML = "";
     displayProducts(productsOrdonnees);
 });
+
+const boutonFiltrerInformatique = document.querySelector(".btn-informatique");
+
+boutonFiltrerInformatique.addEventListener("click", function (){
+    const productsFiltrer = products.filter(function (product){
+        retrun product.categorieId ==;
+    });
+    document.querySelector(.fiches).innerHTML = "";
+    displayProducts(productsFiltrer);
+})
