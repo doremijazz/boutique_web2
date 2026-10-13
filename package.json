@@ -1,0 +1,25 @@
+{
+  "name": "boutique",
+  "version": "1.0.0",
+  "description": "",
+  "main": "catalogue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doremijazz/boutique_web2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/doremijazz/boutique_web2/issues"
+  },
+  "homepage": "https://github.com/doremijazz/boutique_web2#readme",
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
