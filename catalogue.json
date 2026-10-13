@@ -1,0 +1,147 @@
+
+{
+  "categories": [
+    {
+      "id": 1,
+      "nom": "Informatique"
+    },
+    {
+      "id": 2,
+      "nom": "Vêtements"
+    },
+    {
+      "id": 3,
+      "nom": "Maison"
+    },
+    {
+      "id": 4,
+      "nom": "Beauté"
+    },
+    {
+      "id": 5,
+      "nom": "Sport"
+    }
+  ],
+  "produits": [
+    {
+      "id": 1,
+      "nom": "Ordinateur portable",
+      "description": "Ordinateur 15 pouces avec 16 Go de RAM",
+      "prix": 799.99,
+      "categorieId": 1,
+      "stock": 12,
+      "disponible": true,
+      "image": "images/ordinateur.jpg"
+    },
+    {
+      "id": 2,
+      "nom": "Souris sans fil",
+      "description": "Souris ergonomique Bluetooth",
+      "prix": 24.90,
+      "categorieId": 1,
+      "stock": 30,
+      "disponible": true,
+      "image": "images/souris.jpg"
+    },
+    {
+      "id": 3,
+      "nom": "Clavier mécanique",
+      "description": "Clavier rétroéclairé pour ordinateur",
+      "prix": 69.99,
+      "categorieId": 1,
+      "stock": 0,
+      "disponible": false,
+      "image": "images/clavier.jpg"
+    },
+    {
+      "id": 4,
+      "nom": "T-shirt coton",
+      "description": "T-shirt unisexe en coton biologique",
+      "prix": 19.99,
+      "categorieId": 2,
+      "stock": 45,
+      "disponible": true,
+      "image": "images/tshirt.jpg"
+    },
+    {
+      "id": 5,
+      "nom": "Jean slim",
+      "description": "Jean bleu coupe slim",
+      "prix": 49.90,
+      "categorieId": 2,
+      "stock": 20,
+      "disponible": true,
+      "image": "images/jean.jpg"
+    },
+    {
+      "id": 6,
+      "nom": "Lampe de bureau",
+      "description": "Lampe LED avec intensité réglable",
+      "prix": 34.99,
+      "categorieId": 3,
+      "stock": 15,
+      "disponible": true,
+      "image": "images/lampe.jpg"
+    },
+    {
+      "id": 7,
+      "nom": "Coussin décoratif",
+      "description": "Coussin en velours 40x40 cm",
+      "prix": 15.50,
+      "categorieId": 3,
+      "stock": 0,
+      "disponible": false,
+      "image": "images/coussin.jpg"
+    },
+    {
+      "id": 8,
+      "nom": "Crème hydratante",
+      "description": "Crème visage pour peaux sensibles",
+      "prix": 18.90,
+      "categorieId": 4,
+      "stock": 35,
+      "disponible": true,
+      "image": "images/creme.jpg"
+    },
+    {
+      "id": 9,
+      "nom": "Shampoing doux",
+      "description": "Shampoing pour tous types de cheveux",
+      "prix": 9.99,
+      "categorieId": 4,
+      "stock": 50,
+      "disponible": true,
+      "image": "images/shampoing.jpg"
+    },
+    {
+      "id": 10,
+      "nom": "Tapis de yoga",
+      "description": "Tapis antidérapant de 6 mm",
+      "prix": 29.90,
+      "categorieId": 5,
+      "stock": 18,
+      "disponible": true,
+      "image": "images/yoga.jpg"
+    },
+    {
+      "id": 11,
+      "nom": "Haltères 5 kg",
+      "description": "Paire d'haltères pour musculation",
+      "prix": 39.99,
+      "categorieId": 5,
+      "stock": 10,
+      "disponible": true,
+      "image": "images/halteres.jpg"
+    },
+    {
+      "id": 12,
+      "nom": "Gourde inox",
+      "description": "Gourde isotherme de 750 ml",
+      "prix": 22.50,
+      "categorieId": 5,
+      "stock": 0,
+      "disponible": false,
+      "image": "images/gourde.jpg"
+    }
+  ]
+}
