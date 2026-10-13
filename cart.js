@@ -40,7 +40,12 @@ function createOrder() {
 
 // Augmente la quantité d'un article
 function increaseQuantity(id) {
+    // Recherche l'article dans le panier grâce à son identifiant
+    const existingItem = cart.find(item => item.article.id === id);
 
+    if (existingItem && existingItem.quantity < existingItem.article.stock) {
+        existingItem.quantity++;
+    }
 }
 
 // Diminue la quantité d'un article
