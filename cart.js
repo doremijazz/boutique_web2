@@ -65,7 +65,12 @@ function decreaseQuantity(id) {
 
 // Calcule le sous-total d'un article
 function calculateSubtotal(id) {
-
+    // Recherche l'article dans le panier grâce à son identifiant
+    const existingItem = cart.find(item => item.article.id === id);
+    if (existingItem) {
+        return existingItem.quantity * existingItem.article.price;
+    }
+    return 0;
 }
 
 // Affiche le contenu du panier
