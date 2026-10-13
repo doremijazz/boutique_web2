@@ -2,12 +2,27 @@
 let cart = [];
 
 // Ajoute un article au panier
-function addToCart(product) {
+function addArticle(article) {
 
 }
 
 // Supprime un article du panier
-function removeFromCart(id) {
+function deleteArticle(id) {
+
+}
+
+// Calcule le montant total du panier
+function calculateTotal() {
+
+}
+
+// Vide le panier
+function reset() {
+
+}
+
+// Crée une commande
+function createOrder() {
 
 }
 
@@ -21,22 +36,12 @@ function decreaseQuantity(id) {
 
 }
 
-// Calcule le montant total du panier
-function calculateTotal() {
+// Calcule le sous-total d'un article
+function calculateSubtotal(id) {
 
 }
 
 // Affiche le contenu du panier
 function renderCart() {
-
-}
-
-// Vide le panier
-function clearCart() {
-
-}
-
-// Passe une commande
-function placeOrder() {
 
 }
