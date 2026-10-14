@@ -157,14 +157,3 @@ function renderCart() {
     // Affiche le montant total du panier
     cartTotal.textContent = calculateTotal();
 }
-
-// TEST TEMPORAIRE : affichage du panier
-const testArticle = {
-    id: 1,
-    nom: "T-shirt",
-    prix: 20,
-    stock: 5
-};
-
-addArticle(testArticle);
-renderCart();
