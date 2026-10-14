@@ -6,6 +6,11 @@ let nextOrderId = 1;
 
 // Ajoute un article au panier
 export function addArticle(article) {
+    // Empêche l'ajout d'un produit épuisé
+    if (article.stock <= 0) {
+        alert("Ce produit est actuellement épuisé.")
+        return;
+    }
     // Recherche si l'article est déjà présent dans le panier
     const existingItem = cart.find(item => item.article.id === article.id)
 
@@ -71,6 +76,8 @@ function increaseQuantity(id) {
 
     if (existingItem && existingItem.quantity < existingItem.article.stock) {
         existingItem.quantity++;
+    } else {
+        alert(`Stock insuffisant. Seulement ${existingItem.article.stock} article(s) disponible(s).`);
     }
 }
 
