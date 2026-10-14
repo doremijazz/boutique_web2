@@ -74,6 +74,11 @@ function increaseQuantity(id) {
     // Recherche l'article dans le panier grâce à son identifiant
     const existingItem = cart.find(item => item.article.id === id);
 
+    // Arrête la fonction si l'article n'existe pas
+    if (!existingItem) {
+        return;
+    }
+
     if (existingItem && existingItem.quantity < existingItem.article.stock) {
         existingItem.quantity++;
     } else {
