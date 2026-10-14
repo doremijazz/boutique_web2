@@ -135,7 +135,7 @@ function renderCart() {
 
         // Crée un élément pour le prix et la quantité de l'article, puis l'ajoute dans la ligne du panier
         const articlePriceQuantity = document.createElement("p");
-        articlePriceQuantity.textContent = `${item.article.prix} x ${item.quantity} =  ${calculateSubtotal(item.article.id)}`;
+        articlePriceQuantity.textContent = `${item.article.prix.toFixed(2)} x ${item.quantity} =  ${calculateSubtotal(item.article.id).toFixed(2)}`;
         cartItem.appendChild(articlePriceQuantity);
 
         // Crée le bouton pour diminuer la quantité, puis l'ajoute dans la ligne du panier
@@ -175,7 +175,7 @@ function renderCart() {
         cartItems.appendChild(cartItem);
     }
     // Affiche le montant total du panier
-    cartTotal.textContent = calculateTotal();
+    cartTotal.textContent = calculateTotal().toFixed(2);
 }
 
 // Récupère le bouton de FERMETURE PANIER
