@@ -17,7 +17,11 @@ export function addArticle(article) {
         cart.push({
             article : article,
             quantity : 1
-        })
+        });
+    }
+    // Actualise l'affichage uniquement si le panier est ouvert
+    if (!cartSection.hidden) {
+        renderCart();
     }
 }
 
