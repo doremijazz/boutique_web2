@@ -1,6 +1,9 @@
 // Tableau contenant les articles du panier
 let cart = [];
 
+// Identifiant de la prochaine commande
+let nextOrderId = 1;
+
 // Ajoute un article au panier
 function addArticle(article) {
     // Recherche si l'article est déjà présent dans le panier
@@ -41,7 +44,20 @@ function reset() {
 
 // Crée une commande
 function createOrder() {
-
+    // Vérifie si le panier est vide
+    if (cart.length === 0) {
+        return null;
+    }
+    // Crée une commande à partir du panier
+    const order = {
+        id : nextOrderId++,
+        items  : cart,
+        total : calculateTotal()
+    };
+    // Vide le panier
+    reset();
+    // Retourne l'order créé
+    return order;
 }
 
 // Augmente la quantité d'un article
