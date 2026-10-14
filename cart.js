@@ -94,6 +94,15 @@ function calculateSubtotal(id) {
     return 0;
 }
 
+// Récupère le bouton et la section du panier
+const cartButton = document.querySelector("#cart-button");
+const cartSection = document.querySelector("#cart-section");
+// Affiche le panier au clic sur le bouton
+cartButton.addEventListener("click", () => {
+    renderCart();
+    cartSection.hidden = false;
+});
+
 // Affiche le contenu du panier
 function renderCart() {
     // Récupère les éléments HTML nécessaires
@@ -157,3 +166,11 @@ function renderCart() {
     // Affiche le montant total du panier
     cartTotal.textContent = calculateTotal();
 }
+
+// Récupère le bouton de fermeture du panier
+const closeCartButton = document.querySelector("#close-cart");
+
+// Ferme le panier sans supprimer son contenu
+closeCartButton.addEventListener("click", () => {
+    cartSection.hidden = true;
+});
