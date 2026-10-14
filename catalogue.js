@@ -15,6 +15,7 @@ function displayProducts(products){
         const sectionFiches = document.querySelector(".fiches");
         // Création d’une balise dédiée à une pièce automobile
         const productElement = document.createElement("article");
+        productElement.classList.add("article");
 
         // On ajoute tous les attributs du produit
         const imageElement = document.createElement("img");
@@ -69,38 +70,67 @@ function displayProducts(products){
 
 displayProducts(produits);
 
-function displayDetailsProduct(product){
-    // Récupération de l'élément du DOM qui accueillera les fiches
-        const sectionFiches = document.querySelector(".fiches");
-        // Création d’une balise dédiée à une pièce automobile
-        const productElement = document.createElement("article");
 
-        // On ajoute tous les attributs du produit
-        const imageElement = document.createElement("img");
-        imageElement.src = product.image;
+function displayDetailsProduct(product) {
 
-        const nomElement = document.createElement("h2");
-        nomElement.innerText = product.nom;
+    // Création de la pop-up
+    const productElement = document.createElement("div");
+    productElement.classList.add("oneArticle");
 
-        const priceElement = document.createElement("p");
-        priceElement.innerText = `${products[i].prix} €`;
+    // Contenu de la pop-up
+    const contentElement = document.createElement("article");
+    contentElement.classList.add("detail-content");
 
-        const quantityElement = document.createElement("p");
-        quantityElement.innerText = product.stock;
+    // Image
+    const imageElement = document.createElement("img");
+    imageElement.src = product.image;
 
-        const descriptionElement = document.createElement("p");
-        descriptionElement.innerText = product.description;
+    // Nom
+    const nomElement = document.createElement("h2");
+    nomElement.innerText = product.nom;
 
-        //Rattachement de nos balises au DOM
-        sectionFiches.appendChild(productElement);
-        
-        //Ajout des éléments au DOM pour l'exercice
-        productElement.appendChild(imageElement);
-        productElement.appendChild(nomElement);
-        productElement.appendChild(priceElement);
-        productElement.appendChild(quantityElement);
-        productElement.appendChild(descriptionElement);
+    // Prix
+    const priceElement = document.createElement("p");
+    priceElement.innerText = `${product.prix} €`;
+
+    // Stock
+    const quantityElement = document.createElement("p");
+    quantityElement.innerText = `Stock : ${product.stock}`;
+
+    // Description
+    const descriptionElement = document.createElement("p");
+    descriptionElement.innerText = product.description;
+
+    // Bouton fermer
+    const closeButton = document.createElement("button");
+    closeButton.innerText = "×";
+    closeButton.classList.add("close-detail");
+
+    closeButton.addEventListener("click", () => {
+        productElement.remove();
+    });
+
+    // Fermer en cliquant sur le fond
+    productElement.addEventListener("click", (event) => {
+        if (event.target === productElement) {
+            productElement.remove();
+        }
+    });
+
+    // Ajout des éléments
+    contentElement.appendChild(closeButton);
+    contentElement.appendChild(imageElement);
+    contentElement.appendChild(nomElement);
+    contentElement.appendChild(priceElement);
+    contentElement.appendChild(quantityElement);
+    contentElement.appendChild(descriptionElement);
+
+    productElement.appendChild(contentElement);
+
+    // Ajout de la pop-up à la page
+    document.body.appendChild(productElement);
 }
+
 
 const boutonTrierCroissant = document.querySelector(".btn-trier-croissant");
 
@@ -118,7 +148,7 @@ const boutonTrierDecroissant = document.querySelector(".btn-trier-decroissant");
 boutonTrierDecroissant.addEventListener("click", function (){
     const productsOrdonnees = Array.from(produits);
     productsOrdonnees.sort(function (a,b){
-        return a.prix - b.prix;
+        return b.prix- a.prix ;
     });
     document.querySelector(".fiches").innerHTML = "";
     displayProducts(productsOrdonnees);
