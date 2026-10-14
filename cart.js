@@ -1,8 +1,16 @@
+// ==========================================
+// 1. DONNÉES DU PANIER ET DES COMMANDES
+// ==========================================
+
 // Tableau contenant les articles du panier
 let cart = [];
 
 // Identifiant de la prochaine commande
 let nextOrderId = 1;
+
+// ==========================================
+// 2. GESTION DES ARTICLES DU PANIER
+// ==========================================
 
 // Ajoute un article au panier
 export function addArticle(article) {
@@ -36,39 +44,6 @@ function deleteArticle(id) {
     cart = cart.filter(item => item.article.id !== id)
 }
 
-// Calcule le montant total du panier
-function calculateTotal() {
-    let total = 0; 
-    // Additionne les sous-totaux des articles du panier
-    cart.forEach(item => {
-        total += calculateSubtotal(item.article.id);
-    });
-    return total;
-}
-
-// Vide le panier
-function reset() {
-    cart = [];
-}
-
-// Crée une commande
-function createOrder() {
-    // Vérifie si le panier est vide
-    if (cart.length === 0) {
-        return null;
-    }
-    // Crée une commande à partir du panier
-    const order = {
-        id : nextOrderId++,
-        items  : cart,
-        total : calculateTotal()
-    };
-    // Vide le panier
-    reset();
-    // Retourne l'order créé
-    return order;
-}
-
 // Augmente la quantité d'un article
 function increaseQuantity(id) {
     // Recherche l'article dans le panier grâce à son identifiant
@@ -100,6 +75,15 @@ function decreaseQuantity(id) {
     }
 }
 
+// Vide le panier
+function reset() {
+    cart = [];
+}
+
+// ==========================================
+// 3. CALCULS DU PANIER
+// ==========================================
+
 // Calcule le sous-total d'un article
 function calculateSubtotal(id) {
     // Recherche l'article dans le panier grâce à son identifiant
@@ -110,14 +94,19 @@ function calculateSubtotal(id) {
     return 0;
 }
 
-// Récupère le bouton et la section du panier
-const cartButton = document.querySelector("#cart-button");
-const cartSection = document.querySelector("#cart-section");
-// Affiche le panier au clic sur le bouton
-cartButton.addEventListener("click", () => {
-    renderCart();
-    cartSection.hidden = false;
-});
+// Calcule le montant total du panier
+function calculateTotal() {
+    let total = 0; 
+    // Additionne les sous-totaux des articles du panier
+    cart.forEach(item => {
+        total += calculateSubtotal(item.article.id);
+    });
+    return total;
+}
+
+// ==========================================
+// 4. AFFICHAGE DU PANIER
+// ==========================================
 
 // Affiche le CONTENU DU PANIER
 function renderCart() {
@@ -182,6 +171,41 @@ function renderCart() {
     // Affiche le montant total du panier
     cartTotal.textContent = calculateTotal().toFixed(2);
 }
+
+// ==========================================
+// 5. GESTION DES COMMANDES
+// ==========================================
+
+// Crée une commande
+function createOrder() {
+    // Vérifie si le panier est vide
+    if (cart.length === 0) {
+        return null;
+    }
+    // Crée une commande à partir du panier
+    const order = {
+        id : nextOrderId++,
+        items  : cart,
+        total : calculateTotal()
+    };
+    // Vide le panier
+    reset();
+    // Retourne l'order créé
+    return order;
+}
+
+// ==========================================
+// 6. ÉVÉNEMENTS UTILISATEUR
+// ==========================================
+
+// Récupère le bouton et la section du panier
+const cartButton = document.querySelector("#cart-button");
+const cartSection = document.querySelector("#cart-section");
+// Affiche le panier au clic sur le bouton
+cartButton.addEventListener("click", () => {
+    renderCart();
+    cartSection.hidden = false;
+});
 
 // Récupère le bouton de FERMETURE PANIER
 const closeCartButton = document.querySelector("#close-cart");
