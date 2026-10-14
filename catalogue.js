@@ -22,10 +22,11 @@ function displayProducts(products){
         nomElement.innerText = products[i].nom;
 
         const priceElement = document.createElement("p");
-        priceElement.innerText = '${products[i].prix} €';
+        priceElement.innerText = `${products[i].prix} €`;
 
         const disponibilityElement = document.createElement("p");
-        disponibilityElement = products[i].disponibilite ? "En stock" : "Epuisé";
+        disponibilityElement.innerText =
+            products[i].stock > 0 ? "En stock" : "Épuisé";
 
         // AJout du bouton pour ajouter au panier
 
@@ -46,6 +47,8 @@ function displayProducts(products){
 
 }
 
+displayProducts(produits);
+
 function displayDetailsProduct(product){
     // Récupération de l'élément du DOM qui accueillera les fiches
         const sectionFiches = document.querySelector(".fiches");
@@ -60,7 +63,7 @@ function displayDetailsProduct(product){
         nomElement.innerText = product.nom;
 
         const priceElement = document.createElement("p");
-        priceElement.innerText = '${product.prix} €';
+        priceElement.innerText = `${products[i].prix} €`;
 
         const quantityElement = document.createElement("p");
         quantityElement.innerText = product.stock;
@@ -104,7 +107,7 @@ boutonTrierDecroissant.addEventListener("click", function (){
 const boutonFiltrerInformatique = document.querySelector(".btn-informatique");
 
 boutonFiltrerInformatique.addEventListener("click", function (){
-    const productsFiltrer = products.filter(function (product){
+    const productsFiltrer = produits.filter(function (product){
         return product.categorieId == 1;
     });
     document.querySelector(".fiches").innerHTML = "";
@@ -114,7 +117,7 @@ boutonFiltrerInformatique.addEventListener("click", function (){
 const boutonFiltrerVetement = document.querySelector(".btn-vetement");
 
 boutonFiltrerVetement.addEventListener("click", function (){
-    const productsFiltrer = products.filter(function (product){
+    const productsFiltrer = produits.filter(function (product){
         return product.categorieId == 2;
     });
     document.querySelector(".fiches").innerHTML = "";
@@ -124,7 +127,7 @@ boutonFiltrerVetement.addEventListener("click", function (){
 const boutonFiltrerMaison = document.querySelector(".btn-maison");
 
 boutonFiltrerMaison.addEventListener("click", function (){
-    const productsFiltrer = products.filter(function (product){
+    const productsFiltrer = produits.filter(function (product){
         return product.categorieId == 3;
     });
     document.querySelector(".fiches").innerHTML = "";
@@ -134,7 +137,7 @@ boutonFiltrerMaison.addEventListener("click", function (){
 const boutonFiltrerBeaute = document.querySelector(".btn-beauté");
 
 boutonFiltrerBeaute.addEventListener("click", function (){
-    const productsFiltrer = products.filter(function (product){
+    const productsFiltrer = produits.filter(function (product){
         return product.categorieId == 4;
     });
     document.querySelector(".fiches").innerHTML = "";
@@ -144,7 +147,7 @@ boutonFiltrerBeaute.addEventListener("click", function (){
 const boutonFiltrerSport = document.querySelector(".btn-sport");
 
 boutonFiltrerSport.addEventListener("click", function (){
-    const productsFiltrer = products.filter(function (product){
+    const productsFiltrer = produits.filter(function (product){
         return product.categorieId == 5;
     });
     document.querySelector(".fiches").innerHTML = "";
