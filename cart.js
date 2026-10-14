@@ -1,11 +1,24 @@
+// ==========================================
+// 1. DONNÉES DU PANIER ET DES COMMANDES
+// ==========================================
+
 // Tableau contenant les articles du panier
 let cart = [];
 
 // Identifiant de la prochaine commande
 let nextOrderId = 1;
 
+// ==========================================
+// 2. GESTION DES ARTICLES DU PANIER
+// ==========================================
+
 // Ajoute un article au panier
 export function addArticle(article) {
+    // Empêche l'ajout d'un produit épuisé
+    if (article.stock <= 0) {
+        alert("Ce produit est actuellement épuisé.")
+        return;
+    }
     // Recherche si l'article est déjà présent dans le panier
     const existingItem = cart.find(item => item.article.id === article.id)
 
@@ -17,7 +30,11 @@ export function addArticle(article) {
         cart.push({
             article : article,
             quantity : 1
-        })
+        });
+    }
+    // Actualise l'affichage uniquement si le panier est ouvert
+    if (!cartSection.hidden) {
+        renderCart();
     }
 }
 
@@ -27,46 +44,20 @@ function deleteArticle(id) {
     cart = cart.filter(item => item.article.id !== id)
 }
 
-// Calcule le montant total du panier
-function calculateTotal() {
-    let total = 0; 
-    // Additionne les sous-totaux des articles du panier
-    cart.forEach(item => {
-        total += calculateSubtotal(item.article.id);
-    });
-    return total;
-}
-
-// Vide le panier
-function reset() {
-    cart = [];
-}
-
-// Crée une commande
-function createOrder() {
-    // Vérifie si le panier est vide
-    if (cart.length === 0) {
-        return null;
-    }
-    // Crée une commande à partir du panier
-    const order = {
-        id : nextOrderId++,
-        items  : cart,
-        total : calculateTotal()
-    };
-    // Vide le panier
-    reset();
-    // Retourne l'order créé
-    return order;
-}
-
 // Augmente la quantité d'un article
 function increaseQuantity(id) {
     // Recherche l'article dans le panier grâce à son identifiant
     const existingItem = cart.find(item => item.article.id === id);
 
+    // Arrête la fonction si l'article n'existe pas
+    if (!existingItem) {
+        return;
+    }
+
     if (existingItem && existingItem.quantity < existingItem.article.stock) {
         existingItem.quantity++;
+    } else {
+        alert(`Stock insuffisant. Seulement ${existingItem.article.stock} article(s) disponible(s).`);
     }
 }
 
@@ -84,6 +75,15 @@ function decreaseQuantity(id) {
     }
 }
 
+// Vide le panier
+function reset() {
+    cart = [];
+}
+
+// ==========================================
+// 3. CALCULS DU PANIER
+// ==========================================
+
 // Calcule le sous-total d'un article
 function calculateSubtotal(id) {
     // Recherche l'article dans le panier grâce à son identifiant
@@ -94,16 +94,21 @@ function calculateSubtotal(id) {
     return 0;
 }
 
-// Récupère le bouton et la section du panier
-const cartButton = document.querySelector("#cart-button");
-const cartSection = document.querySelector("#cart-section");
-// Affiche le panier au clic sur le bouton
-cartButton.addEventListener("click", () => {
-    renderCart();
-    cartSection.hidden = false;
-});
+// Calcule le montant total du panier
+function calculateTotal() {
+    let total = 0; 
+    // Additionne les sous-totaux des articles du panier
+    cart.forEach(item => {
+        total += calculateSubtotal(item.article.id);
+    });
+    return total;
+}
 
-// Affiche le contenu du panier
+// ==========================================
+// 4. AFFICHAGE DU PANIER
+// ==========================================
+
+// Affiche le CONTENU DU PANIER
 function renderCart() {
     // Récupère les éléments HTML nécessaires
     const cartItems = document.querySelector("#cart-items");
@@ -124,7 +129,7 @@ function renderCart() {
 
         // Crée un élément pour le prix et la quantité de l'article, puis l'ajoute dans la ligne du panier
         const articlePriceQuantity = document.createElement("p");
-        articlePriceQuantity.textContent = `${item.article.prix} x ${item.quantity} =  ${calculateSubtotal(item.article.id)}`;
+        articlePriceQuantity.textContent = `${item.article.prix.toFixed(2)} x ${item.quantity} =  ${calculateSubtotal(item.article.id).toFixed(2)}`;
         cartItem.appendChild(articlePriceQuantity);
 
         // Crée le bouton pour diminuer la quantité, puis l'ajoute dans la ligne du panier
@@ -164,13 +169,78 @@ function renderCart() {
         cartItems.appendChild(cartItem);
     }
     // Affiche le montant total du panier
-    cartTotal.textContent = calculateTotal();
+    cartTotal.textContent = calculateTotal().toFixed(2);
 }
 
-// Récupère le bouton de fermeture du panier
+// ==========================================
+// 5. GESTION DES COMMANDES
+// ==========================================
+
+// Crée une commande
+function createOrder() {
+    // Vérifie si le panier est vide
+    if (cart.length === 0) {
+        return null;
+    }
+    // Crée une commande à partir du panier
+    const order = {
+        id : nextOrderId++,
+        items  : cart,
+        total : calculateTotal()
+    };
+    // Vide le panier
+    reset();
+    // Retourne l'order créé
+    return order;
+}
+
+// ==========================================
+// 6. ÉVÉNEMENTS UTILISATEUR
+// ==========================================
+
+// Récupère le bouton et la section du panier
+const cartButton = document.querySelector("#cart-button");
+const cartSection = document.querySelector("#cart-section");
+// Affiche le panier au clic sur le bouton
+cartButton.addEventListener("click", () => {
+    renderCart();
+    cartSection.hidden = false;
+});
+
+// Récupère le bouton de FERMETURE PANIER
 const closeCartButton = document.querySelector("#close-cart");
 
 // Ferme le panier sans supprimer son contenu
 closeCartButton.addEventListener("click", () => {
     cartSection.hidden = true;
+});
+
+// Récupère le bouton permettant de PASSER COMMANDE
+const orderButton = document.querySelector("#order-button");
+
+// Gère le clic sur le bouton de commande
+orderButton.addEventListener("click", () => {
+
+    // Vérifie que le panier contient au moins un article
+    if (cart.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }
+
+    // Demande confirmation à l'utilisateur
+    const isConfirmed = window.confirm("Voulez-vous confirmer votre commande ?");
+
+    // Arrête si l'utilisateur annule
+    if (!isConfirmed) {
+        return;
+    }
+
+    // Crée la commande et vide le panier
+    const order = createOrder();
+    // Actualise l'affichage du panier
+    renderCart();
+
+    // Affiche un message avec le numéro de commande
+    alert(`Votre commande n°${order.id} a bien été validée.`);
+
 });
