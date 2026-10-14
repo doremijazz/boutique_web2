@@ -5,6 +5,8 @@
         <title>Ma page</title>
         <link rel="stylesheet" href="style.css"/>
         <script type="module" src="catalogue.js"></script>
+        <!-- Script de gestion du panier -->
+        <script type="module" src="cart.js"></script>
     </head>
     <body>
         <header>
@@ -38,17 +40,19 @@
             </section>
 
             <!-- Section contenant le panier -->
-            <section id="cart-section" hidden>
-                <h2>Mon panier</h2>
+            <section id="cart-section" >
+                <div class="cart-header">
+                    <h2>Mon panier</h2>
+                    <button id="close-cart" type="button">×</button>
+                </div>
 
                 <!-- Liste des articles présents dans le panier -->
                 <div id="cart-items"></div>
 
-                <!-- Montant total du panier -->
-                <p>Total : <span id="cart-total">0,00</span> €</p>
-
-                <!-- Bouton permettant de passer commande -->
-                <button id="order-button" type="button">Passer commande</button>
+                <div class="cart-footer">
+                    <p>Total : <span id="cart-total">0,00</span> €</p>
+                    <button id="order-button" type="button">Passer la commande</button>
+                </div>
             </section>
 
         </main>
