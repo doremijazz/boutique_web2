@@ -5,7 +5,7 @@ let cart = [];
 let nextOrderId = 1;
 
 // Ajoute un article au panier
-function addArticle(article) {
+export function addArticle(article) {
     // Recherche si l'article est déjà présent dans le panier
     const existingItem = cart.find(item => item.article.id === article.id)
 

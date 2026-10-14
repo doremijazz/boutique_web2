@@ -1,3 +1,5 @@
+import { addArticle } from "./cart.js";
+
 const reponse = await fetch("catalogue.json");
 const data = await reponse.json();
 
@@ -29,6 +31,24 @@ function displayProducts(products){
             products[i].stock > 0 ? "En stock" : "Épuisé";
 
         // AJout du bouton pour ajouter au panier
+
+        // Création du bouton pour ajouter un produit au panier
+        const addButton = document.createElement("button");
+        addButton.textContent = "Ajouter au panier";
+
+        // Désactive le bouton si le produit est épuisé
+        addButton.disabled = products[i].stock <= 0;
+
+        // Ajoute le bouton à la fiche produit
+        productElement.appendChild(addButton);
+
+        // Ajoute le produit au panier lors du clic
+        addButton.addEventListener("click", (event) => {
+            // Empêche le clic de déclencher l'ouverture des détails du produit
+            event.stopPropagation();
+
+            addArticle(products[i]);
+        });
 
         // Clic sur la fiche produit
         productElement.addEventListener("click", () => {
