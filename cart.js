@@ -103,7 +103,7 @@ cartButton.addEventListener("click", () => {
     cartSection.hidden = false;
 });
 
-// Affiche le contenu du panier
+// Affiche le CONTENU DU PANIER
 function renderCart() {
     // Récupère les éléments HTML nécessaires
     const cartItems = document.querySelector("#cart-items");
@@ -167,10 +167,40 @@ function renderCart() {
     cartTotal.textContent = calculateTotal();
 }
 
-// Récupère le bouton de fermeture du panier
+// Récupère le bouton de FERMETURE PANIER
 const closeCartButton = document.querySelector("#close-cart");
 
 // Ferme le panier sans supprimer son contenu
 closeCartButton.addEventListener("click", () => {
     cartSection.hidden = true;
+});
+
+// Récupère le bouton permettant de PASSER COMMANDE
+const orderButton = document.querySelector("#order-button");
+
+// Gère le clic sur le bouton de commande
+orderButton.addEventListener("click", () => {
+
+    // Vérifie que le panier contient au moins un article
+    if (cart.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }
+
+    // Demande confirmation à l'utilisateur
+    const isConfirmed = window.confirm("Voulez-vous confirmer votre commande ?");
+
+    // Arrête si l'utilisateur annule
+    if (!isConfirmed) {
+        return;
+    }
+
+    // Crée la commande et vide le panier
+    const order = createOrder();
+    // Actualise l'affichage du panier
+    renderCart();
+
+    // Affiche un message avec le numéro de commande
+    alert(`Votre commande n°${order.id} a bien été validée.`);
+
 });
