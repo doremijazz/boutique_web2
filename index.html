@@ -10,6 +10,8 @@
             <h1>
                 STORE
             </h1>
+            <!-- Bouton permettant d'ouvrir le panier -->
+            <button id="cart-button" type="button">Panier</button>
         </header>
         <main>
             <section class="filtres">
@@ -27,8 +29,23 @@
                 <button class="btn_sport">Sport</button>
 			</section>
 
+            <!-- Section contenant le panier -->
+            <section id="cart-section" hidden>
+                <h2>Mon panier</h2>
+
+                <!-- Liste des articles présents dans le panier -->
+                <div id="cart-items"></div>
+
+                <!-- Montant total du panier -->
+                <p>Total : <span id="cart-total">0,00</span> €</p>
+
+                <!-- Bouton permettant de passer commande -->
+                <button id="order-button" type="button">Passer commande</button>
+            </section>
+
         </main>
         <footer>
 
         </footer>
     </body>
+</html>

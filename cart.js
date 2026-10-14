@@ -96,5 +96,7 @@ function calculateSubtotal(id) {
 
 // Affiche le contenu du panier
 function renderCart() {
-
+    // Récupère les éléments HTML nécessaires
+    const cartItems = document.querySelector("#cart-items");
+    const cartTotal = document.querySelector("#cart-total");
 }
