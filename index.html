@@ -10,33 +10,51 @@
     </head>
     <body>
         <header class="banniere">
-            <button id="cart-button" type="button">Panier</button>
+            <div class="panier_btn">
+                <button id="cart-button" type="button">Panier </button>
+                <img src="images/logo_caddie.png">
+            </div>
             <h1>
-                NovaShop
+                <img src="images/logo_sac.png">
+                <p>NovaShop</p>
             </h1>
             <!-- Bouton permettant d'ouvrir le panier -->
             
         </header>
         <main>
+            <section class="promos">
+                <div>
+                    <h3> BIENVENU SUR NOVASHOP</h3>
+                    <h2>Découvrez vos nouveau favoris.</h2>
+                    <p>Une selection de produit pour votre quotidien</p>
+                    <a href="#produits" class="btn-produits">
+                    Voir les produits →
+                    </a>
+                </div>
+                <img src="images/sac_bleu.png">
+
+            </section>
             <section class="filtre">
-				<h3>Filtrer</h3>
-				<button class="btn-informatique">Informatique</button>
+				<h3>Nos produit</h3>
+				<button class="btn-informatique btn-filtre">Informatique</button>
 				<br>
-				<button class="btn-vetement">Vétements</button>
+				<button class="btn-vetement btn-filtre">Vétements</button>
 				<br>
-				<button class="btn-maison">Maison</button>
+				<button class="btn-maison btn-filtre">Maison</button>
                 <br>
-                <button class="btn-beauté">Beauté</button>
+                <button class="btn-beauté btn-filtre">Beauté</button>
                 <br>
-                <button class="btn-sport">Sport</button>
+                <button class="btn-sport btn-filtre">Sport</button>
 			</section>
             <section class="trie">
-                <h3>Trier</h3>
-                <button class="btn-trier-croissant">Prix croissant</button>
-				<br>
-                <button class="btn-trier-decroissant">Prix decroissant</button>
+                <label for="tri">Trier par :</label>
+                <select id="tri">
+                    <option value="defaut">Par défaut</option>
+                    <option value="croissant">Prix croissant</option>
+                    <option value="decroissant">Prix décroissant</option>
+                </select>
             </section>
-            <section class="fiches">
+            <section class="fiches" id="produits">
 
             </section>
 

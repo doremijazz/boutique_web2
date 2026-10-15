@@ -31,7 +31,7 @@
       "categorieId": 1,
       "stock": 12,
       "disponible": true,
-      "image": "images/ordinateur.jpg"
+      "image": "images/ordinateur.png"
     },
     {
       "id": 2,
@@ -41,7 +41,7 @@
       "categorieId": 1,
       "stock": 30,
       "disponible": true,
-      "image": "images/souris.jpg"
+      "image": "images/souris.png"
     },
     {
       "id": 3,
@@ -51,7 +51,7 @@
       "categorieId": 1,
       "stock": 0,
       "disponible": false,
-      "image": "images/clavier.jpg"
+      "image": "images/clavier.png"
     },
     {
       "id": 4,
@@ -61,7 +61,7 @@
       "categorieId": 2,
       "stock": 45,
       "disponible": true,
-      "image": "images/tshirt.jpg"
+      "image": "images/tshirt.png"
     },
     {
       "id": 5,
@@ -71,7 +71,7 @@
       "categorieId": 2,
       "stock": 20,
       "disponible": true,
-      "image": "images/jean.jpg"
+      "image": "images/jean.png"
     },
     {
       "id": 6,
@@ -81,7 +81,7 @@
       "categorieId": 3,
       "stock": 15,
       "disponible": true,
-      "image": "images/lampe.jpg"
+      "image": "images/lampe.png"
     },
     {
       "id": 7,
@@ -91,7 +91,7 @@
       "categorieId": 3,
       "stock": 0,
       "disponible": false,
-      "image": "images/coussin.jpg"
+      "image": "images/coussin.png"
     },
     {
       "id": 8,
@@ -101,7 +101,7 @@
       "categorieId": 4,
       "stock": 35,
       "disponible": true,
-      "image": "images/creme.jpg"
+      "image": "images/creme.png"
     },
     {
       "id": 9,
@@ -111,7 +111,7 @@
       "categorieId": 4,
       "stock": 50,
       "disponible": true,
-      "image": "images/shampoing.jpg"
+      "image": "images/shampoing.png"
     },
     {
       "id": 10,
@@ -121,7 +121,7 @@
       "categorieId": 5,
       "stock": 18,
       "disponible": true,
-      "image": "images/yoga.jpg"
+      "image": "images/yoga.png"
     },
     {
       "id": 11,
@@ -131,7 +131,7 @@
       "categorieId": 5,
       "stock": 10,
       "disponible": true,
-      "image": "images/halteres.jpg"
+      "image": "images/halteres.png"
     },
     {
       "id": 12,
@@ -141,7 +141,7 @@
       "categorieId": 5,
       "stock": 0,
       "disponible": false,
-      "image": "images/gourde.jpg"
+      "image": "images/gourde.png"
     }
   ]
 }
