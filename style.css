@@ -94,6 +94,54 @@
         AFFICHAGE DU PANIER
    ========================================== */
 
+/* Fond sombre de la fenêtre du panier */
+#cart-section:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenu du panier */
+.cart-header,
+#cart-items,
+.cart-footer {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* En-tête du panier */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Bouton de fermeture du panier */
+#close-cart {
+    background: none;
+    border: none;
+    font-size: 25px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Liste des articles */
+#cart-items {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
 /* Chaque article du panier */
 .cart-item {
     display: flex;
@@ -124,6 +172,21 @@
     border-radius: 8px;
 }
 
+/* Boutons de gestion des quantités et de suppression */
+.cart-item button {
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+/* Pied du panier : total à gauche et bouton à droite */
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-radius: 0 0 15px 15px;
+}
+
 /* Bouton de validation de commande */
 #order-button {
     background: #00b4d8;
@@ -135,13 +198,17 @@
     font-weight: bold;
 }
 
-/* Bouton de fermeture du panier */
-#close-cart {
-    background: none;
-    border: none;
-    font-size: 25px;
-    width: auto;
-    height: auto;
+
+/* Fond sombre */
+.oneArticle {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Tablette */
@@ -156,19 +223,6 @@
     .fiches {
         grid-template-columns: 1fr;
     }
-}
-
-
-/* Fond sombre */
-.oneArticle {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Fenêtre contenant le produit */
@@ -203,69 +257,5 @@
     cursor: pointer;
 }
 
-
-/* Fond sombre de la pop-up */
-#cart-section:not([hidden]) {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Contenu du panier */
-.cart-header,
-#cart-items,
-.cart-footer {
-    background-color: white;
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* En-tête du panier */
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 15px 15px 0 0;
-}
-
-/* Liste des articles */
-#cart-items {
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-/* Pied du panier */
-.cart-footer {
-    border-radius: 0 0 15px 15px;
-}
-
-/* Chaque article du panier */
-.cart-item {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Boutons du panier */
-.cart-item button {
-    margin: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-/* Bouton de fermeture */
-#close-cart {
-    background: none;
-    border: none;
-    font-size: 25px;
-    cursor: pointer;
-}
 
 
