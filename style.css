@@ -86,10 +86,26 @@ body{
     color: #102D46;
 }
 
-.promos button{
+html {
+    scroll-behavior: smooth;
+}
+
+#produits {
+    scroll-margin-top: 30px;
+}
+
+.btn-produits {
+    display: inline-block;
+    padding: 12px 20px;
     background-color: #0EA5C6;
-    border-radius: 50px;
     color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-produits:hover {
+    background-color: #102D46;
 }
 
 .promos img {

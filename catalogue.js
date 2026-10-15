@@ -144,6 +144,36 @@ boutons.forEach(bouton => {
     });
 });
 
+const boutonProduits = document.querySelector(".btn-produits");
+const sectionProduits = document.querySelector("#produits");
+
+console.log("Bouton trouvé :", boutonProduits);
+console.log("Section produits trouvée :", sectionProduits);
+console.log("Hauteur de la page :", document.documentElement.scrollHeight);
+console.log("Hauteur de la fenêtre :", window.innerHeight);
+
+if (boutonProduits && sectionProduits) {
+
+    boutonProduits.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        console.log("Clic sur Voir les produits !");
+        console.log("Position avant scroll :", window.scrollY);
+        console.log("Position de la section :", sectionProduits.getBoundingClientRect().top);
+
+        sectionProduits.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        console.log("Défilement demandé !");
+    });
+
+} else {
+    console.error("Bouton ou section produits introuvable !");
+}
+
 const menuTri = document.querySelector("#tri");
 
 menuTri.addEventListener("change", function () {
