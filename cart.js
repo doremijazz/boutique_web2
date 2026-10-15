@@ -241,7 +241,7 @@ function createOrder() {
 // ==========================================
 
 // Récupère le bouton et la section du panier
-const cartButton = document.querySelector("#cart-button");
+const cartButton = document.querySelector(".panier_btn");
 const cartSection = document.querySelector("#cart-section");
 // Affiche le panier au clic sur le bouton
 cartButton.addEventListener("click", () => {
