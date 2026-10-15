@@ -129,28 +129,38 @@ function displayDetailsProduct(product) {
     document.body.appendChild(productElement);
 }
 
+const boutons = document.querySelectorAll(".btn-filtre");
 
-const boutonTrierCroissant = document.querySelector(".btn-trier-croissant");
+console.log("Boutons trouvés :", boutons.length);
 
-boutonTrierCroissant.addEventListener("click", function (){
-    const productsOrdonnees = Array.from(produits);
-    productsOrdonnees.sort(function (a,b){
-        return a.prix - b.prix;
+boutons.forEach(bouton => {
+    bouton.addEventListener("click", function () {
+
+        boutons.forEach(b => b.classList.remove("active"));
+
+        bouton.classList.add("active");
+
+        console.log("Bouton actif :", bouton.className);
     });
-    document.querySelector(".fiches").innerHTML = "";
-    displayProducts(productsOrdonnees);
 });
 
-const boutonTrierDecroissant = document.querySelector(".btn-trier-decroissant");
+const menuTri = document.querySelector("#tri");
 
-boutonTrierDecroissant.addEventListener("click", function (){
-    const productsOrdonnees = Array.from(produits);
-    productsOrdonnees.sort(function (a,b){
-        return b.prix- a.prix ;
-    });
+menuTri.addEventListener("change", function () {
+
+    let produitsTries = [...produits];
+
+    if (menuTri.value === "croissant") {
+        produitsTries.sort((a, b) => a.prix - b.prix);
+    } else if (menuTri.value === "decroissant") {
+        produitsTries.sort((a, b) => b.prix - a.prix);
+    }
+
     document.querySelector(".fiches").innerHTML = "";
-    displayProducts(productsOrdonnees);
+    displayProducts(produitsTries);
+
 });
+
 
 const boutonFiltrerInformatique = document.querySelector(".btn-informatique");
 
