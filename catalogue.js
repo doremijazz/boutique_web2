@@ -40,9 +40,6 @@ function displayProducts(products){
         // Désactive le bouton si le produit est épuisé
         addButton.disabled = products[i].stock <= 0;
 
-        // Ajoute le bouton à la fiche produit
-        productElement.appendChild(addButton);
-
         // Ajoute le produit au panier lors du clic
         addButton.addEventListener("click", (event) => {
             // Empêche le clic de déclencher l'ouverture des détails du produit
@@ -64,6 +61,7 @@ function displayProducts(products){
         productElement.appendChild(nomElement);
         productElement.appendChild(priceElement);
         productElement.appendChild(disponibilityElement);
+        productElement.appendChild(addButton);
     }
 
 }
