@@ -90,6 +90,60 @@
     transform: translateY(-3px);
 }
 
+/* ========================================== 
+        AFFICHAGE DU PANIER
+   ========================================== */
+
+/* Chaque article du panier */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Informations du produit */
+.article-info {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Boutons de gestion du produit */
+.article-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+/* Boutons du panier */
+#cart-section button {
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Bouton de validation de commande */
+#order-button {
+    background: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: auto;
+    height: auto;
+    font-weight: bold;
+}
+
+/* Bouton de fermeture du panier */
+#close-cart {
+    background: none;
+    border: none;
+    font-size: 25px;
+    width: auto;
+    height: auto;
+}
+
 /* Tablette */
 @media (max-width: 900px) {
     .fiches {

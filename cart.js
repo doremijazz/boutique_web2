@@ -122,20 +122,29 @@ function renderCart() {
         const cartItem = document.createElement("div");
         cartItem.classList.add("cart-item");
 
-        // Crée un élément pour le nom de l'article, puis l'ajoute dans la ligne du panier
+        // Contient le nom et le prix de l'article
+        const articleInfo = document.createElement("div");
+        articleInfo.classList.add("article-info");
+
+        // Crée un élément pour le nom de l'article
         const articleName = document.createElement("p");
         articleName.textContent = item.article.nom;
-        cartItem.appendChild(articleName);
 
-        // Crée un élément pour le prix et la quantité de l'article, puis l'ajoute dans la ligne du panier
+        // Crée un élément pour le prix et la quantité de l'article
         const articlePriceQuantity = document.createElement("p");
         articlePriceQuantity.textContent = `${item.article.prix.toFixed(2)} x ${item.quantity} =  ${calculateSubtotal(item.article.id).toFixed(2)}`;
-        cartItem.appendChild(articlePriceQuantity);
+        
+        articleInfo.appendChild(articleName);
+        articleInfo.appendChild(articlePriceQuantity);
+
+        // Contient les boutons de gestion de l'article
+        const articleActions = document.createElement("div");
+        articleActions.classList.add("article-actions");
 
         // Crée le bouton pour diminuer la quantité, puis l'ajoute dans la ligne du panier
         const decreaseButton = document.createElement("button");
         decreaseButton.textContent = "-";
-        cartItem.appendChild(decreaseButton);
+        articleActions.appendChild(decreaseButton);
 
         // Diminue la quantité au clic et actualise le panier
         decreaseButton.addEventListener("click", () => {
@@ -146,7 +155,7 @@ function renderCart() {
         // Crée le bouton pour augmenter la quantité, puis l'ajoute dans la ligne du panier
         const increaseButton = document.createElement("button");
         increaseButton.textContent = "+";
-        cartItem.appendChild(increaseButton);
+        articleActions.appendChild(increaseButton);
 
         // Augmente la quantité au clic et actualise le panier
         increaseButton.addEventListener("click", () => {
@@ -157,7 +166,7 @@ function renderCart() {
         // Crée le bouton pour supprimer l'article du panier, puis l'ajoute dans la ligne du panier
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Suppr";
-        cartItem.appendChild(deleteButton);
+        articleActions.appendChild(deleteButton);
 
         // Supprime l'article au clic et actualise le panier
         deleteButton.addEventListener("click", () => {
@@ -165,6 +174,10 @@ function renderCart() {
             renderCart();
         });
 
+        // Regroupe les informations et les boutons dans la ligne du panier
+        cartItem.appendChild(articleInfo);
+        cartItem.appendChild(articleActions);
+        
         // Ajoute la ligne dans le panier
         cartItems.appendChild(cartItem);
     }
