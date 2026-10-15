@@ -11,6 +11,7 @@ body{
     justify-content: center;
      align-items: center; 
     border-radius: 10px;
+    position :relative;
 }
 
 .banniere h1 {
@@ -28,43 +29,63 @@ body{
     margin: 20px;
 }
 
+/* Conteneur du bouton et du caddie */
 .panier_btn {
-    margin: 10px;
-    min-height: 250px;
-    padding: 30px;
-    max-height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.panier_btn img {
-    width: 35px;
-    height: 35px;
     position: absolute;
-    object-fit: contain;
-    right: 10px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
+/* Bouton pour ouvrir le panier */
 #cart-button {
+    position: static;
     background-color: #0EA5C6;
     border-radius: 50px;
     color: white;
     margin: 0;
+    padding: 10px 20px;
+    border: none;
     cursor: pointer;
-    text-align: right;
-    right: 80px;
-    top:auto;
-    position: absolute;
 }
 
-.banniere button {
+/* Conteneur du caddie */
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image du caddie */
+.cart-icon img {
+    width: 35px;
+    height: 35px;
+    position: static;
+    margin: 0;
+}
+
+/* Compteur des articles du panier */
+#cart-count {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px;
+    top: -5px;
+    right: -5px;
+
+    background: none;
+    color: #0EA5C6;
+    border-radius: 0;
+    padding: 0;
+
+    min-width: auto;
+    height: auto;
+
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
 }
 
 .promos {
@@ -300,7 +321,7 @@ html {
 
 /* Bouton de validation de commande */
 #order-button {
-    background: #00b4d8;
+    background: #0EA5C6;
     color: white;
     border: none;
     padding: 10px 15px;

@@ -32,6 +32,10 @@ export function addArticle(article) {
             quantity : 1
         });
     }
+
+    // Actualise le compteur du panier
+    updateCartCount();
+
     // Actualise l'affichage uniquement si le panier est ouvert
     if (!cartSection.hidden) {
         renderCart();
@@ -42,6 +46,8 @@ export function addArticle(article) {
 function deleteArticle(id) {
     // Conserve uniquement les articles dont l'identifiant est différent
     cart = cart.filter(item => item.article.id !== id)
+    // Actualise le compteur du panier
+    updateCartCount();
 }
 
 // Augmente la quantité d'un article
@@ -56,6 +62,8 @@ function increaseQuantity(id) {
 
     if (existingItem && existingItem.quantity < existingItem.article.stock) {
         existingItem.quantity++;
+        // Actualise le compteur du panier
+        updateCartCount();
     } else {
         alert(`Stock insuffisant. Seulement ${existingItem.article.stock} article(s) disponible(s).`);
     }
@@ -69,6 +77,8 @@ function decreaseQuantity(id) {
     if (existingItem ) {
         if(existingItem.quantity > 1) {
             existingItem.quantity--;
+            // Actualise le compteur du panier
+            updateCartCount();
         }else {
             deleteArticle(id);
         }
@@ -78,6 +88,8 @@ function decreaseQuantity(id) {
 // Vide le panier
 function reset() {
     cart = [];
+    // Actualise le compteur après avoir vidé le panier
+    updateCartCount();
 }
 
 // ==========================================
@@ -104,9 +116,26 @@ function calculateTotal() {
     return total;
 }
 
+// Calcule le nombre total d'articles dans le panier
+function calculateCartCount() {
+    let count = 0;
+
+    cart.forEach(item => {
+        count += item.quantity;
+    });
+
+    return count;
+}
+
 // ==========================================
 // 4. AFFICHAGE DU PANIER
 // ==========================================
+
+// Actualise le compteur du bouton Panier
+function updateCartCount() {
+    const cartCount = document.querySelector("#cart-count");
+    cartCount.textContent = calculateCartCount();
+}
 
 // Affiche le CONTENU DU PANIER
 function renderCart() {
